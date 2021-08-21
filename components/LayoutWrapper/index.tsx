@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Head from 'next/head';
 
 import { withRouter } from "next/router";
 import Header from "../Header";
@@ -15,10 +14,6 @@ function LayoutWrapper({ router, children }) {
 
   return (
     <>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>{user.mainTitle}{user.pageTitle}</title>
-      </Head>
       <Header
         title={user.title}
         className={styles["adjust-content"]}
