@@ -18,7 +18,7 @@ const user: User = {
   mainTitle: "Blog",
   pageTitle: " | 9gustin",
   url: 'https://9gustin.com',
-  mainImagePath: 'https://github.com/9gustin/personal-blog/blob/improve-seo/resources/main-img.jpg?raw=true'
+  mainImagePath: 'https://github.com/9gustin/personal-blog/blob/main/resources/main-img.jpg?raw=true'
 }
 
 export default user;
