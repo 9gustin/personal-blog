@@ -4,16 +4,21 @@ import { getDatabase, getPage, getBlocks } from "../lib/notion";
 import ArticleWrapper from "../components/ArticleWrapper";
 
 import { databaseId } from ".";
+import Head from "next/head";
+import HtmlHead from "../components/HtmlHead";
 
-export default function Post({ page, blocks }) {
+export default function Post({ page, blocks, mainTitle }) {
   if (!page || !blocks) {
     return <div />;
   }
 
   return (
-    <ArticleWrapper title={<Render blocks={[page.properties.Name]} />}>
-      <Render blocks={blocks} useStyles />
-    </ArticleWrapper>
+    <>
+      <HtmlHead title={mainTitle} />
+      <ArticleWrapper title={<Render blocks={[page.properties.Name]} />}>
+        <Render blocks={blocks} useStyles />
+      </ArticleWrapper>
+    </>
   );
 }
 
@@ -56,6 +61,7 @@ export const getStaticProps = async (context) => {
     props: {
       page,
       blocks: blocksWithChildren,
+      mainTitle: (page.properties.Name as any).title[0].plain_text
     },
     revalidate: 1,
   };
