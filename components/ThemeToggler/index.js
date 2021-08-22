@@ -11,7 +11,7 @@ function ThemeToggler() {
 
   const actualTheme = () => localStorage.getItem(THEME_KEY);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setTheme(actualTheme() || (isNavigatorDarkTheme() ? THEMES.DARK : THEMES.LIGHT));
   }, [])
 
