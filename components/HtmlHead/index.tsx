@@ -15,12 +15,12 @@ function HtmlHead({ title, description, url, image }: Props) {
     description: description || user.description,
     url: url || user.url,
     image: image || user.mainImagePath,
-  }
+  };
 
   return (
     <Head>
       <title>{data.title}</title>
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/static/favicon.ico" />
       <meta name="title" content={data.title} />
       <meta name="description" content={data.description} />
       <meta property="og:type" content="website" />
@@ -33,6 +33,24 @@ function HtmlHead({ title, description, url, image }: Props) {
       <meta property="twitter:title" content={data.title} />
       <meta property="twitter:description" content={data.description} />
       <meta property="twitter:image" content={data.image} />
+
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
+        }}
+      />
     </Head>
   );
 }
