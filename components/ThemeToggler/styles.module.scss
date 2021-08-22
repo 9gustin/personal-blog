@@ -23,10 +23,3 @@
   background: var(--text-color);
   color: var(--bkg-color); 
 }
-
-@media (max-width: $mobile-breakpoint) {
-  .button {
-    padding: 8px;
-    width: 115px;
-  }
-}

@@ -1,0 +1,33 @@
+.footer {
+  background-color: var(--theme-color);
+  color: #222;
+  margin-top: 100px;
+  min-height: 25vh;
+  display: grid;
+
+  & > * {
+    margin: auto;
+  }
+  .links {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+  
+    .icon {
+      color: inherit;
+      font-size: 40px;
+      transition: transform .5s;
+  
+      a {
+        color: inherit;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+

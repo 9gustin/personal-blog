@@ -1,4 +1,4 @@
-import { RiMoonFill, RiSunFill } from "react-icons/ri";
+import { RiMoonLine, RiSunLine } from "react-icons/ri";
 
 export const THEMES = {
   DARK: 'dark',
@@ -8,6 +8,6 @@ export const THEMES = {
 export const THEME_KEY = 'SELECTED_THEME';
 
 export const THEMES_LABELS = {
-  [THEMES.DARK]: <RiSunFill />,
-  [THEMES.LIGHT]: <RiMoonFill />,
+  [THEMES.DARK]: <RiSunLine />,
+  [THEMES.LIGHT]: <RiMoonLine />,
 }
