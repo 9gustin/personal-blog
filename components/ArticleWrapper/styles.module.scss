@@ -1,3 +1,16 @@
+.article {
+  margin: auto;
+  max-width: 800px;
+}
+
+.contents {
+  position: fixed;
+  right: 0;
+  margin: 100px 30px;
+  top: 0;
+  width: 200px;
+}
+
 .go-back {
   color: var(--theme-color);
   display: block;
@@ -9,5 +22,11 @@
   &::before {
     content: '←';
     margin-right: 15px;
+  }
+}
+
+@media (max-width: 1350px){
+  .contents {
+    display: none;
   }
 }

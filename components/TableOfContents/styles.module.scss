@@ -1,0 +1,21 @@
+.list {
+  list-style: none;
+  padding: 0;
+  border-left: 1px solid var(--light-text-color);
+  padding-left: 15px;
+
+  li {
+    margin: 10px 0;
+
+    a {
+      color: var(--text-color);
+      font-weight: 300;
+      opacity: .7;
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
