@@ -1,7 +1,14 @@
 .article {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: 1fr 250px;
+  margin: auto;
+  max-width: 800px;
+}
+
+.contents {
+  position: fixed;
+  right: 0;
+  margin: 100px 30px;
+  top: 0;
+  width: 200px;
 }
 
 .go-back {
@@ -18,11 +25,8 @@
   }
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1350px){
   .contents {
     display: none;
-  }
-  .article {
-    grid-template-columns: 1fr;
   }
 }
