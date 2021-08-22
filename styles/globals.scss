@@ -93,11 +93,10 @@ p, span, a {
 }
 
 body {
-  --font-size-primary: 16px;
+  --font-size-primary: 1.15rem;;
 }
 
 .rnr-paragraph, .rnr-paragraph * {
   letter-spacing: .2px;
-  font-size: 1.15rem;
   line-height: 1.5;
 }
