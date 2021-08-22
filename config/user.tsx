@@ -1,5 +1,6 @@
 import React from "react";
-import { RiGithubLine, RiTwitterLine, RiDiscordLine, RiLinkedinLine } from "react-icons/ri";
+import { RiGithubLine, RiTwitterLine, RiLinkedinLine } from "react-icons/ri";
+import { BiCoffee } from "react-icons/bi";
 
 interface User {
   title: React.ReactNode;
@@ -44,6 +45,11 @@ const user: User = {
       name: 'Linkedin',
       icon: <RiLinkedinLine />,
       url: 'https://www.linkedin.com/in/vazquezagustin/'
+    },
+    {
+      name: 'Cafecito',
+      icon: <BiCoffee />,
+      url: 'https://cafecito.app/9gustin'
     }
   ]
 }

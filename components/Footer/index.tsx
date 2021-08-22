@@ -11,7 +11,7 @@ function Footer() {
           <li key={name} className={styles.icon}>
             {
               url ? 
-                <a href={url}>{icon}</a> 
+                <a href={url} target="_blank" rel="noreferrer">{icon}</a> 
                 : icon
             }
           </li>
