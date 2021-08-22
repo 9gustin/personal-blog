@@ -17,7 +17,7 @@ interface Props {
 
 function ArticleWrapper({ title, children, index }: Props) {
   return (
-    <main className={styles.article}>
+    <main>
       <article>
         <h1>{title}</h1>
         <section>{children}</section>
