@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500&display=swap');
 @import 'variables';
 
 body {
   --text-color: #222;
-  --bkg-color: #EEE;
+  --light-text-color: #555;
+  --bkg-color: #e0e0e0;
   --anchor-color: #0033cc;
   --theme-color: #3B82F6;
 
@@ -32,7 +34,8 @@ body {
 }
 body.dark {
   --text-color: #D9D9D9;
-  --bkg-color: #282c34;
+  --light-text-color: #888;
+  --bkg-color: #1a202c;
   --anchor-color: #809fff;
 
   &.js-theme {
@@ -60,18 +63,24 @@ body {
   background-color: var(--bkg-color);
 }
 
-a, 
-:any-link {
+a,
+.rnr-container a, 
+.rnr-container :any-link {
   color: var(--anchor-color);
+  opacity: 1;
   text-decoration: none;
 }
 
 * {
   box-sizing: border-box;
-  font-family: var(--font-family), sans-serif;
+  // font-family: var(--font-family), sans-serif;
+  // font-family: 'Lato', sans-serif;
+  // font-family: 'IBM Plex Sans Thai', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
 }
 
 h1 {
+  font-size: 28px;
   font-weight: 500;
 }
 
@@ -85,4 +94,14 @@ p, span, a {
     --size-lg: 16px;
     --size-xl: 26px;
   }
+}
+
+body {
+  --font-size-primary: 16px;
+}
+
+.rnr-paragraph, .rnr-paragraph * {
+  letter-spacing: .2px;
+  font-size: 1.15rem;
+  line-height: 1.5;
 }

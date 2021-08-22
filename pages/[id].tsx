@@ -1,4 +1,8 @@
-import { Render } from "@9gustin/react-notion-render";
+import {
+  indexGenerator,
+  NotionBlock,
+  Render,
+} from "@9gustin/react-notion-render";
 
 import { getDatabase, getPage, getBlocks } from "../lib/notion";
 import ArticleWrapper from "../components/ArticleWrapper";
@@ -7,7 +11,13 @@ import { databaseId } from ".";
 import Head from "next/head";
 import HtmlHead from "../components/HtmlHead";
 
-export default function Post({ page, blocks, mainTitle }) {
+interface Props {
+  page: any;
+  blocks: NotionBlock[];
+  mainTitle: string;
+}
+
+export default function Post({ page, blocks, mainTitle }: Props) {
   if (!page || !blocks) {
     return <div />;
   }
@@ -15,8 +25,11 @@ export default function Post({ page, blocks, mainTitle }) {
   return (
     <>
       <HtmlHead title={mainTitle} />
-      <ArticleWrapper title={<Render blocks={[page.properties.Name]} />}>
-        <Render blocks={blocks} useStyles />
+      <ArticleWrapper
+        title={<Render blocks={[page.properties.Name]} />}
+        index={indexGenerator(blocks)}
+      >
+        <Render blocks={blocks} useStyles classNames/>
       </ArticleWrapper>
     </>
   );
@@ -61,7 +74,7 @@ export const getStaticProps = async (context) => {
     props: {
       page,
       blocks: blocksWithChildren,
-      mainTitle: (page.properties.Name as any).title[0].plain_text
+      mainTitle: (page.properties.Name as any).title[0].plain_text,
     },
     revalidate: 1,
   };
