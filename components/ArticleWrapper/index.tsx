@@ -17,12 +17,12 @@ interface Props {
 
 function ArticleWrapper({ title, children, index }: Props) {
   return (
-    <main>
+    <main className={styles.article}>
       <article>
         <h1>{title}</h1>
         <section>{children}</section>
       </article>
-      <TableOfContents index={index}/>
+      <TableOfContents index={index} className={styles.contents} />
       <Link href="/">
         <a className={styles["go-back"]}>Volver</a>
       </Link>

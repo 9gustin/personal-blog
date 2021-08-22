@@ -1,7 +1,10 @@
 import { blockEnum, rnrSlugify, Text } from "@9gustin/react-notion-render";
 import React from "react";
 
+import styles from './styles.module.scss'
+
 interface Props {
+  className?: string;
   index: {
     id: string;
     type: blockEnum;
@@ -10,11 +13,11 @@ interface Props {
   }[];
 }
 
-function TableOfContents({ index }: Props) {
+function TableOfContents({ index, className }: Props) {
   return (
-    <aside>
+    <aside className={className}>
       <h4>Contenido del articulo</h4>
-      <ul>
+      <ul className={styles.list}>
         {index.filter(item => item.type === blockEnum.HEADING2).map(({ id, plainText, type }) => (
           <li key={id} className={type}>
             <a href={`#${rnrSlugify(plainText)}`}>{plainText}</a>

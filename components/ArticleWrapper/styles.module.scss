@@ -1,3 +1,9 @@
+.article {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 250px;
+}
+
 .go-back {
   color: var(--theme-color);
   display: block;
@@ -9,5 +15,14 @@
   &::before {
     content: '←';
     margin-right: 15px;
+  }
+}
+
+@media (max-width: 1200px){
+  .contents {
+    display: none;
+  }
+  .article {
+    grid-template-columns: 1fr;
   }
 }
