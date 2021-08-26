@@ -10,6 +10,7 @@ interface User {
   description?: string;
   url?: string;
   mainImagePath?: string;
+  keywords?: string;
   links?: {
     name: string;
     icon: React.ReactNode;
@@ -25,6 +26,7 @@ const user: User = {
   mainTitle: "Blog",
   pageTitle: " | 9gustin",
   url: 'https://9gustin.com',
+  keywords: 'Artículos, vídeos, recursos, Desarollo Web, Frontend, JavaScript, React',
   mainImagePath: 'https://github.com/9gustin/personal-blog/blob/main/resources/main-img.jpg?raw=true',
   links: [
     {

@@ -15,6 +15,7 @@ function HtmlHead({ title, description, url, image }: Props) {
     description: description || user.description,
     url: url || user.url,
     image: image || user.mainImagePath,
+    keywords: user.keywords,
   };
 
   return (
@@ -23,6 +24,7 @@ function HtmlHead({ title, description, url, image }: Props) {
       <link rel="icon" href="/static/favicon.ico" />
       <meta name="title" content={data.title} />
       <meta name="description" content={data.description} />
+      <meta name="keywords" content={data.keywords}/>
       <meta property="og:type" content="website" />
       <meta property="og:url" content={data.url} />
       <meta property="og:title" content={data.title} />
