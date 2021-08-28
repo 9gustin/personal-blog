@@ -8,7 +8,8 @@
 
 .header p {
   font-size: var(--size-lg);
-  line-height: 1.5;
+  line-height: 30px;
+  margin: 8px 0;
   opacity: 0.8;
   width: 100%;
 }

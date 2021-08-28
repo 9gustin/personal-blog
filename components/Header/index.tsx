@@ -22,7 +22,7 @@ function Header({ className, title, description }: Props) {
         </Link>
       </h1>
       <ThemeToggler />
-      {description && <p>{description}</p>}
+      {description && description}
     </header>
   );
 }

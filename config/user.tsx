@@ -8,9 +8,11 @@ interface User {
   mainTitle: string;
   theme: 'react' | 'angular' | 'vue' | 'js' | 'svelte' | null;
   description?: string;
+  richDescription?: React.ReactNode;
   url?: string;
   mainImagePath?: string;
   keywords?: string;
+  favicon?: string;
   links?: {
     name: string;
     icon: React.ReactNode;
@@ -21,13 +23,18 @@ interface User {
 const user: User = {
   title: "9gustin",
   description: 
-    "Mi nombre empieza con 9 porque del 1 al 8 estaban ocupados. Soy Frontend Dev y cree este blog para escribir sobre cosas que me parezcan interesantes.",
+    "Soy 9gustin porque [1-8]gustin estaban ocupados. Soy Frontend Dev y cree este blog para escribir sobre cosas que me parezcan interesantes.",
+  richDescription: (<>
+    <p>Soy 9gustin porque [1-8]gustin estaban ocupados. Soy Frontend Dev y cree este blog para escribir sobre cosas que me parezcan interesantes.</p>
+    <p>visit <a className="theme-color" href="https://dev.to/9gustin"  target="_blank" rel="noreferrer">dev.to/9gustin</a> for the english version</p>
+  </>),
   theme: "react",
   mainTitle: "Blog",
   pageTitle: " | 9gustin",
   url: 'https://9gustin.com',
-  keywords: 'Artículos, vídeos, recursos, Desarollo Web, Frontend, JavaScript, React',
-  mainImagePath: 'https://github.com/9gustin/personal-blog/blob/main/resources/main-img.jpg?raw=true',
+  keywords: 'Artículos, recursos, Desarollo Web, Frontend, JavaScript, React',
+  mainImagePath: '/main-img.jpg',
+  favicon: '/favicon.ico',
   links: [
     {
       name: 'Github',
@@ -39,10 +46,6 @@ const user: User = {
       icon: <RiTwitterLine />,
       url: 'https://twitter.com/9gustin'
     },
-    // {
-    //   name: '9gustin#7613',
-    //   icon: <RiDiscordLine />
-    // },
     {
       name: 'Linkedin',
       icon: <RiLinkedinLine />,

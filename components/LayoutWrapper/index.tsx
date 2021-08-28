@@ -18,7 +18,7 @@ function LayoutWrapper({ router, children }) {
       <Header
         title={user.title}
         className={styles["adjust-content"]}
-        description={router.pathname === PATHS.home ? user.description : undefined}
+        description={router.pathname === PATHS.home ? user.richDescription : undefined}
       />
       <main className={`${styles["adjust-content"]} ${styles.main}`}>{children}</main>
       <Footer />

@@ -16,12 +16,13 @@ function HtmlHead({ title, description, url, image }: Props) {
     url: url || user.url,
     image: image || user.mainImagePath,
     keywords: user.keywords,
+    icon: user.favicon
   };
 
   return (
     <Head>
       <title>{data.title}</title>
-      <link rel="icon" href="/static/favicon.ico" />
+      <link rel="icon" href={data.icon} />
       <meta name="title" content={data.title} />
       <meta name="description" content={data.description} />
       <meta name="keywords" content={data.keywords}/>
