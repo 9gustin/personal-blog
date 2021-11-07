@@ -19,7 +19,6 @@ function ArticleWrapper({ title, children, index }: Props) {
   return (
     <>
       <article className={styles.article}>
-        <h1>{title}</h1>
         <section>{children}</section>
       </article>
       <TableOfContents index={index} className={styles.contents} />

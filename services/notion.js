@@ -1,10 +1,12 @@
 import { Client } from "@notionhq/client";
 
+const databaseId = process.env.NOTION_DATABASE_ID;
+
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-export const getDatabase = async (databaseId) => {
+export const getDatabase = async () => {
   const response = await notion.databases.query({
     database_id: databaseId,
   });

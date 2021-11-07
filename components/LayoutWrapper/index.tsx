@@ -2,11 +2,13 @@ import React, { useLayoutEffect } from "react";
 
 import { withRouter } from "next/router";
 import Header from "../Header";
+import ArticleHeader from "../ArticleHeader";
 import { PATHS } from "../../config/paths";
 
 import styles from "./styles.module.css";
 import user from "../../config/user";
 import Footer from "../Footer";
+import HtmlHead from "../HtmlHead";
 
 function LayoutWrapper({ router, children }) {
   useLayoutEffect(() => {
@@ -15,12 +17,29 @@ function LayoutWrapper({ router, children }) {
 
   return (
     <>
+      <HtmlHead />
       <Header
         title={user.title}
         className={styles["adjust-content"]}
-        description={router.pathname === PATHS.home ? user.richDescription : undefined}
+        description={
+          router.pathname === PATHS.home ? user.richDescription : undefined
+        }
       />
-      <main className={`${styles["adjust-content"]} ${styles.main}`}>{children}</main>
+      {/* TODO: Integrate new article header */}
+      {/* {
+        router.pathname === PATHS.home ? (
+          <Header
+          title={user.title}
+          className={styles["adjust-content"]}
+          description={router.pathname === PATHS.home ? user.richDescription : undefined}
+        />
+        ) : (
+          <ArticleHeader />
+        )
+      } */}
+      <main className={`${styles["adjust-content"]} ${styles.main}`}>
+        {children}
+      </main>
       <Footer />
     </>
   );
