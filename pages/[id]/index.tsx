@@ -4,8 +4,6 @@ import {
 } from "@9gustin/react-notion-render";
 
 import ArticleWrapper from "../../components/ArticleWrapper";
-import { DATABASE_MOCK } from "../../mocks/getDatabaseResponse";
-import { PAGEDATA_MOCK } from "../../mocks/pageDataResponse";
 import { getDatabase } from "../../services/notion";
 import { Page } from "../../types/page";
 
@@ -31,8 +29,7 @@ export default function Post({ page }: Props) {
 }
 
 export const getStaticPaths = async () => {
-  // const database = await getDatabase()
-  const database = DATABASE_MOCK
+  const database = await getDatabase()
   return {
     paths: database.map((page) => ({ params: { id: page.id } })),
     fallback: true,
@@ -41,11 +38,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params;
-  // const page = await getPageData(id);
+  const page = await getPageData(id);
 
   return {
     props: {
-      page: PAGEDATA_MOCK,
+      page,
     },
     revalidate: 1,
   };
