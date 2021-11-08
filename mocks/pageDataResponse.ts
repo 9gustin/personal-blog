@@ -77,7 +77,7 @@ export const PAGEDATA_MOCK = {
         },
       ],
     },
-    metatags: {
+    keywords: {
       id: "sYb=",
       type: "rich_text",
       rich_text: [

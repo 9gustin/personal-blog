@@ -4,6 +4,8 @@ import { Page } from "../../types/page";
 
 import DataContext from "./DataContext";
 
+const wantedProps = [ 'title', 'description', 'release_date', 'keywords' ];
+
 const DataProvider = ({ children }) => {
   const [page, setPage] = React.useState<Page | null>(null);
 
@@ -14,18 +16,45 @@ const DataProvider = ({ children }) => {
       url: user.url,
       image:  user.mainImagePath,
       keywords: user.keywords,
-      icon: user.favicon
+      icon: user.favicon,
+      emoji: user.emoji
     }
 
     if (page) {
-      // TODO: Add custom title, description, url, image and keywords
+      if(page.cover?.[page.cover.type]) {
+        data.image = page.cover[page.cover.type].url;
+      }
+
+      wantedProps.forEach(prop => {
+        if (page.properties[prop]) {
+          data[prop] = page.properties[prop][page.properties[prop].type]?.[0]?.plain_text;
+        }
+      })
     }
 
     return data;
   }, [page])
 
+  const pageData = React.useMemo(() => {
+    if (!page) return null;
+
+    const newPage = {
+      id: page.id,
+      title: '',
+      emoji: page.icon.emoji || user.emoji
+    };
+
+    wantedProps.forEach(prop => {
+      if (page.properties[prop]) {
+        newPage[prop] = page.properties[prop][page.properties[prop].type]?.[0]?.plain_text;
+      }
+    })
+
+    return newPage;
+  }, [page])
+
   return (
-    <DataContext.Provider value={{page, setPage, pageMetaData}}>
+    <DataContext.Provider value={{pageData, setPage, pageMetaData}}>
       {children}
     </DataContext.Provider>
   );

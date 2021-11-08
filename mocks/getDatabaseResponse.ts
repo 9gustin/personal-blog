@@ -78,7 +78,7 @@ export const DATABASE_MOCK = [
           },
         ],
       },
-      metatags: {
+      keywords: {
         id: "sYb=",
         type: "rich_text",
         rich_text: [
@@ -157,7 +157,7 @@ export const DATABASE_MOCK = [
       release_date: { id: "AGlN", type: "rich_text", rich_text: [] },
       Tags: { id: "GIJv", type: "multi_select", multi_select: [] },
       description: { id: "KdFP", type: "rich_text", rich_text: [] },
-      metatags: { id: "sYb=", type: "rich_text", rich_text: [] },
+      keywords: { id: "sYb=", type: "rich_text", rich_text: [] },
       title: { id: "yVkP", type: "rich_text", rich_text: [] },
       Name: {
         id: "title",
@@ -198,7 +198,7 @@ export const DATABASE_MOCK = [
       release_date: { id: "AGlN", type: "rich_text", rich_text: [] },
       Tags: { id: "GIJv", type: "multi_select", multi_select: [] },
       description: { id: "KdFP", type: "rich_text", rich_text: [] },
-      metatags: { id: "sYb=", type: "rich_text", rich_text: [] },
+      keywords: { id: "sYb=", type: "rich_text", rich_text: [] },
       title: { id: "yVkP", type: "rich_text", rich_text: [] },
       Name: {
         id: "title",
@@ -239,7 +239,7 @@ export const DATABASE_MOCK = [
       release_date: { id: "AGlN", type: "rich_text", rich_text: [] },
       Tags: { id: "GIJv", type: "multi_select", multi_select: [] },
       description: { id: "KdFP", type: "rich_text", rich_text: [] },
-      metatags: { id: "sYb=", type: "rich_text", rich_text: [] },
+      keywords: { id: "sYb=", type: "rich_text", rich_text: [] },
       title: { id: "yVkP", type: "rich_text", rich_text: [] },
       Name: {
         id: "title",
