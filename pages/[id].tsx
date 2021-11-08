@@ -15,11 +15,11 @@ interface Props {
 export default function Post({ page }: Props) {
   const { setPage } = useDataContext();
 
+  React.useEffect(() => setPage(page), [page, setPage]);
+
   if (!page) {
     return <div />;
   }
-
-  React.useEffect(() => setPage(page), [page]);
 
   return (
     <ArticleWrapper

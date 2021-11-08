@@ -21,7 +21,7 @@ function PostList({ posts }: Props) {
           <Link href={`/${post.id}`}>
             <a className={styles.post}>
               <h3 className={styles.title}>
-                <Link href={`/${post.id}`}>
+                <Link href={`/${post.id}`} passHref>
                   <Render blocks={[post.properties.Name]} />
                 </Link>
               </h3>
