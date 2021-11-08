@@ -15,8 +15,8 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  // const database = await getDatabase();
-  const database = DATABASE_MOCK
+  const database = await getDatabase();
+  // const database = DATABASE_MOCK
 
   return {
     props: {
