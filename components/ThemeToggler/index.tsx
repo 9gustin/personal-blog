@@ -4,8 +4,12 @@ import isNavigatorDarkTheme from '../../utils/isNavigatorDarkTheme';
 
 import styles from './styles.module.scss';
 
-function ThemeToggler() {
-  const [selectedTheme, setTheme] = useState();
+interface Props {
+  className?: string;
+}
+
+function ThemeToggler({className}: Props) {
+  const [selectedTheme, setTheme] = useState<string | undefined>();
 
   const handleChangeTheme = () => setTheme(THEMES[Object.keys(THEMES).find(theme => THEMES[theme] !== selectedTheme)])
 
@@ -27,7 +31,7 @@ function ThemeToggler() {
   }, [selectedTheme])
 
   return (
-    <button onClick={handleChangeTheme} className={styles.button}>
+    <button onClick={handleChangeTheme} className={`${styles.button} ${className ?? ''}`}>
       {THEMES_LABELS[selectedTheme]}
     </button>
   )

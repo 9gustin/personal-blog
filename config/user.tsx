@@ -17,11 +17,13 @@ interface User {
     name: string;
     icon: React.ReactNode;
     url?: string;
-  }[]
+  }[];
+  emoji?: string;
 }
 
 const user: User = {
   title: "9gustin",
+  emoji: '9️⃣',
   description: 
     "Soy 9gustin porque [1-8]gustin estaban ocupados. Soy Frontend Dev y cree este blog para escribir sobre cosas que me parezcan interesantes.",
   richDescription: (<>
