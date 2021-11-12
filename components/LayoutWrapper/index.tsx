@@ -10,14 +10,14 @@ import user from "../../config/user";
 import Footer from "../Footer";
 import HtmlHead from "../HtmlHead";
 
-function LayoutWrapper({ router, children }) {
+function LayoutWrapper({ router, children, page }) {
   useLayoutEffect(() => {
     if (user.theme) document.body.classList.add(`${user.theme}-theme`);
   }, []);
 
   return (
     <>
-      <HtmlHead />
+      <HtmlHead page={page} />
       <Header
         title={user.title}
         className={styles["adjust-content"]}

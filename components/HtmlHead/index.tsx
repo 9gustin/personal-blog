@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
 
-import useDataContext from "../../context/data/useDataContext";
+import { getPageMetaData } from "../../context/data/DataProvider";
 
-function HtmlHead() {
-  const { pageMetaData: data } = useDataContext();
+function HtmlHead({page}) {
+  const data = getPageMetaData(page);
 
   return (
     <Head>

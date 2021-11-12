@@ -8,9 +8,7 @@ import DataProvider from "../context/data/DataProvider";
 function MyApp({ Component, pageProps }) {
   return (
     <DataProvider>
-      <LayoutWrapper>
-        <Component {...pageProps} />
-      </LayoutWrapper>
+      <Component {...pageProps} />
     </DataProvider>
   );
 }
