@@ -14,6 +14,10 @@
   opacity: 0.85;
   transition: .7s;
   width: 40px;
+  
+  &.withBg {
+    background: var(--bkg-color);
+  }
 }
 
 .button:hover,

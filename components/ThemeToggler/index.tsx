@@ -6,9 +6,10 @@ import styles from './styles.module.scss';
 
 interface Props {
   className?: string;
+  hasBackground?: boolean;
 }
 
-function ThemeToggler({className}: Props) {
+function ThemeToggler({className, hasBackground}: Props) {
   const [selectedTheme, setTheme] = useState<string | undefined>();
 
   const handleChangeTheme = () => setTheme(THEMES[Object.keys(THEMES).find(theme => THEMES[theme] !== selectedTheme)])
@@ -31,7 +32,7 @@ function ThemeToggler({className}: Props) {
   }, [selectedTheme])
 
   return (
-    <button onClick={handleChangeTheme} className={`${styles.button} ${className ?? ''}`}>
+    <button onClick={handleChangeTheme} className={`${styles.button} ${className ?? ''} ${hasBackground ? styles.withBg : ''}`}>
       {THEMES_LABELS[selectedTheme]}
     </button>
   )

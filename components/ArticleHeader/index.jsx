@@ -21,7 +21,7 @@ function ArticleHeader() {
         <img src={pageData.image} alt="Page cover image"/>
       </div>
       {pageData.emoji && <span className={styles.emoji}>{pageData.emoji}</span>}
-      <ThemeToggler className={styles.toggler} />
+      <ThemeToggler className={styles.toggler} hasBackground />
       <h1>{pageData.title}</h1>
       <Link href={PATHS.home}>
         <a className={styles.byMe}>por {user.title}</a>

@@ -15,7 +15,7 @@ interface Props {
   }[];
 }
 
-function ArticleWrapper({ title, children, index }: Props) {
+function ArticleWrapper({ children, index }: Props) {
   return (
     <>
       <article className={styles.article}>
