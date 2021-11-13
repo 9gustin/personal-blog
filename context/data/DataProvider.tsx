@@ -60,6 +60,7 @@ const DataProvider = ({ children }) => {
       title: '',
       emoji: page.icon?.emoji || user.emoji,
       image:  user.mainImagePath,
+      blocks: page.blocks
     };
 
     const newProps = getPageProps(page)

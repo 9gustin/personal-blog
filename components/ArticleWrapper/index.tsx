@@ -1,26 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./styles.module.scss";
+
 import TableOfContents from "../TableOfContents";
-import { blockEnum, Text } from "@9gustin/react-notion-render";
+
+import styles from "./styles.module.scss";
 
 interface Props {
   children: React.ReactNode;
-  index: {
-    id: string;
-    type: blockEnum;
-    text: Text[];
-    plainText: string;
-  }[];
 }
 
-function ArticleWrapper({ children, index }: Props) {
+function ArticleWrapper({ children }: Props) {
   return (
     <>
       <article className={styles.article}>
         <section>{children}</section>
       </article>
-      <TableOfContents index={index} className={styles.contents} />
+      <TableOfContents className={styles.contents} />
       <Link href="/">
         <a className={styles["go-back"]}>Volver</a>
       </Link>

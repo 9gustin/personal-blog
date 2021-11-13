@@ -25,9 +25,7 @@ export default function Post({ page }: Props) {
 
   return (
     <LayoutWrapper page={page}>
-      <ArticleWrapper
-        index={indexGenerator(page.blocks)}
-      >
+      <ArticleWrapper>
         <Render blocks={page.blocks} useStyles classNames />
       </ArticleWrapper>
     </LayoutWrapper>
