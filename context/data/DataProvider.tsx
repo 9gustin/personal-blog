@@ -7,8 +7,14 @@ import DataContext from "./DataContext";
 const wantedProps = [ 'title', 'description', 'release_date', 'keywords' ];
 
 export const getPageProps = (page: Page) => {
-  const data = {
+  if (!page) return;
+
+  const data: any = {
     title: page.properties.Name.title[0].plain_text
+  }
+
+  if(page.cover?.[page.cover.type]) {
+    data.image = page.cover[page.cover.type].url;
   }
 
   wantedProps.forEach(prop => {
@@ -37,9 +43,6 @@ export const getPageMetaData = (page: Page) => {
   }
 
   if (page) {
-    if(page.cover?.[page.cover.type]) {
-      data.image = page.cover[page.cover.type].url;
-    }
     const newProps = getPageProps(page)
     data = {...data, ...newProps}
   }
