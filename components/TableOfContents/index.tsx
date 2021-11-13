@@ -11,7 +11,7 @@ interface Props {
 function TableOfContents({ className }: Props) {
   const {pageData} = useDataContext()
 
-  const index = React.useMemo(() => indexGenerator(pageData?.blocks), [pageData?.blocks])
+  const index = React.useMemo(() => pageData ? indexGenerator(pageData.blocks) : [], [pageData])
 
   return (
     <aside className={className}>
