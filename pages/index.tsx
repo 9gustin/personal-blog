@@ -6,7 +6,7 @@ import { DATABASE_MOCK } from "../mocks/getDatabaseResponse";
 import { getDatabase } from "../services/notion";
 import styles from "./index.module.scss";
 import LayoutWrapper from "../components/LayoutWrapper";
-import { fillPageProps } from "../context/data/DataProvider";
+import { getPageProps } from "../context/data/DataProvider";
 
 export default function Home({ posts }) {
   return (
@@ -19,7 +19,12 @@ export default function Home({ posts }) {
 
 export const getStaticProps = async () => {
   let database = IS_DEV ? (DATABASE_MOCK as any[]) : await getDatabase()
-  database = database.map(fillPageProps)
+  database = database.map(page => {
+    return {
+      ...page,
+      ...getPageProps(page)
+    }
+  })
 
   return {
     props: {

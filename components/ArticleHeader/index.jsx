@@ -19,7 +19,7 @@ function ArticleHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.imgContainer}>
-        <img src={pageData.image} alt="lorem"/>
+        <img src={pageData.image} alt="Page cover image"/>
       </div>
       {pageData.emoji && <span className={styles.emoji}>{pageData.emoji}</span>}
       <ThemeToggler className={styles.toggler} />

@@ -6,17 +6,23 @@ import DataContext from "./DataContext";
 
 const wantedProps = [ 'title', 'description', 'release_date', 'keywords' ];
 
-export const fillPageProps = (page: Page): Page => {
-  page.title = page.properties.Name.title[0].plain_text
+export const getPageProps = (page: Page) => {
+  const data = {
+    title: page.properties.Name.title[0].plain_text
+  }
 
   wantedProps.forEach(prop => {
-    const value = page.properties?.[prop][page.properties[prop].type]?.[0]?.plain_text;
-    if (value) {
-      page[prop] = value;
+    const propName = page.properties[prop]?.type
+
+    if (propName) {
+      const value = page.properties?.[prop][propName]?.[0]?.plain_text;
+      if (value) {
+        data[prop] = value;
+      }
     }
   })
 
-  return page
+  return data
 }
 
 export const getPageMetaData = (page: Page) => {
@@ -34,7 +40,8 @@ export const getPageMetaData = (page: Page) => {
     if(page.cover?.[page.cover.type]) {
       data.image = page.cover[page.cover.type].url;
     }
-    fillPageProps(page)
+    const newProps = getPageProps(page)
+    data = {...data, ...newProps}
   }
 
   return data;
@@ -48,18 +55,15 @@ const DataProvider = ({ children }) => {
   const pageData = React.useMemo(() => {
     if (!page) return null;
 
-    const newPage = {
+    let newPage = {
       id: page.id,
       title: '',
-      emoji: page.icon.emoji || user.emoji,
+      emoji: page.icon?.emoji || user.emoji,
       image:  user.mainImagePath,
     };
 
-    wantedProps.forEach(prop => {
-      if (page.properties[prop]) {
-        newPage[prop] = page.properties[prop][page.properties[prop].type]?.[0]?.plain_text;
-      }
-    })
+    const newProps = getPageProps(page)
+    newPage = {...newPage, ...newProps}
 
     return newPage;
   }, [page])
