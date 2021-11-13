@@ -6,16 +6,26 @@ import ThemeToggler from '../ThemeToggler'
 import { PATHS } from '../../config/paths';
 
 import styles from './styles.module.scss'
+import useDataContext from '../../context/data/useDataContext';
+import user from '../../config/user';
 
-function ArticleHeader({ image, emoji, title }) {
+function ArticleHeader() {
+  const {pageData} = useDataContext();
+
+  if (!pageData) {
+    return <>Cargando...</>;
+  }
+
   return (
     <header className={styles.header}>
-      <Image src={image} alt="lorem"/>
-      {emoji && <span>{emoji}</span>}
+      <div className={styles.imgContainer}>
+        <img src={pageData.image} alt="lorem"/>
+      </div>
+      {pageData.emoji && <span className={styles.emoji}>{pageData.emoji}</span>}
       <ThemeToggler className={styles.toggler} />
-      <h1>{title}</h1>
+      <h1>{pageData.title}</h1>
       <Link href={PATHS.home}>
-        <a className={styles.byMe}>by 9gustin</a>
+        <a className={styles.byMe}>por {user.title}</a>
       </Link>
     </header>
   )

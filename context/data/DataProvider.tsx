@@ -43,7 +43,8 @@ const DataProvider = ({ children }) => {
     const newPage = {
       id: page.id,
       title: '',
-      emoji: page.icon.emoji || user.emoji
+      emoji: page.icon.emoji || user.emoji,
+      image:  user.mainImagePath,
     };
 
     wantedProps.forEach(prop => {

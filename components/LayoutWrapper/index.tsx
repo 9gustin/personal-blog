@@ -18,15 +18,7 @@ function LayoutWrapper({ router, children, page }) {
   return (
     <>
       <HtmlHead page={page} />
-      <Header
-        title={user.title}
-        className={styles["adjust-content"]}
-        description={
-          router.pathname === PATHS.home ? user.richDescription : undefined
-        }
-      />
-      {/* TODO: Integrate new article header */}
-      {/* {
+      {
         router.pathname === PATHS.home ? (
           <Header
           title={user.title}
@@ -36,7 +28,7 @@ function LayoutWrapper({ router, children, page }) {
         ) : (
           <ArticleHeader />
         )
-      } */}
+      }
       <main className={`${styles["adjust-content"]} ${styles.main}`}>
         {children}
       </main>
