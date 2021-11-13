@@ -5,7 +5,6 @@ import TableOfContents from "../TableOfContents";
 import { blockEnum, Text } from "@9gustin/react-notion-render";
 
 interface Props {
-  title: React.ReactNode;
   children: React.ReactNode;
   index: {
     id: string;

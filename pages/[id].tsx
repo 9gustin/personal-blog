@@ -26,7 +26,6 @@ export default function Post({ page }: Props) {
   return (
     <LayoutWrapper page={page}>
       <ArticleWrapper
-        title={"MOCK TITLE"}
         index={indexGenerator(page.blocks)}
       >
         <Render blocks={page.blocks} useStyles classNames />
