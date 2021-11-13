@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 import TableOfContents from "../TableOfContents";
 import { blockEnum, Text } from "@9gustin/react-notion-render";
-import ArticleHeader from "../ArticleHeader";
 
 interface Props {
   title: React.ReactNode;
