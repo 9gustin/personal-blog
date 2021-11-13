@@ -6,6 +6,19 @@ import DataContext from "./DataContext";
 
 const wantedProps = [ 'title', 'description', 'release_date', 'keywords' ];
 
+export const fillPageProps = (page: Page): Page => {
+  page.title = page.properties.Name.title[0].plain_text
+
+  wantedProps.forEach(prop => {
+    const value = page.properties?.[prop][page.properties[prop].type]?.[0]?.plain_text;
+    if (value) {
+      page[prop] = value;
+    }
+  })
+
+  return page
+}
+
 export const getPageMetaData = (page: Page) => {
   let data = {
     title: `${user.mainTitle}${user.pageTitle}`,
@@ -21,12 +34,7 @@ export const getPageMetaData = (page: Page) => {
     if(page.cover?.[page.cover.type]) {
       data.image = page.cover[page.cover.type].url;
     }
-    wantedProps.forEach(prop => {
-
-      if (page.properties?.[prop]) {
-        data[prop] = page.properties[prop][page.properties[prop].type]?.[0]?.plain_text;
-      }
-    })
+    fillPageProps(page)
   }
 
   return data;

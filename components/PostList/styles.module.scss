@@ -21,6 +21,10 @@
     margin: 0;
     overflow: hidden;
     width: 80%;
+
+    a {
+      color: var(--text-color);
+    }
   }
 
   .subtitle {

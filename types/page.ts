@@ -5,11 +5,13 @@ enum coverType {
 }
 
 enum propType {
-  RICH_TEXT = 'rich_text'
+  RICH_TEXT = 'rich_text',
+  TITLE = 'title'
 }
 
 export interface Page {
   id: string;
+  title?: string;
   cover: {
     type: coverType;
     [coverType.EXTERNAL]: {
@@ -25,5 +27,6 @@ export interface Page {
     id: string;
     type: propType;
     [propType.RICH_TEXT]: Text[];
+    [propType.TITLE]: Text[];
   }>;
 }

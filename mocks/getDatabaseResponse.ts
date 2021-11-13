@@ -23,7 +23,7 @@ export const DATABASE_MOCK = [
         rich_text: [
           {
             type: "text",
-            text: { content: "2021-11-07T23:28:03.396Z", link: null },
+            text: { content: "2021-10-07T23:28:03.396Z", link: null },
             annotations: {
               bold: false,
               italic: false,
@@ -32,7 +32,7 @@ export const DATABASE_MOCK = [
               code: false,
               color: "default",
             },
-            plain_text: "2021-11-07T23:28:03.396Z",
+            plain_text: "2021-10-07T23:28:03.396Z",
             href: null,
           },
         ],
