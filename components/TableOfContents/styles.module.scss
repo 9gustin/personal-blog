@@ -10,11 +10,10 @@
     a {
       color: var(--text-color);
       font-weight: 300;
-      opacity: .7;
-      transition: opacity .3s;
+      transition: margin .3s;
 
       &:hover {
-        opacity: 1;
+        margin-left: 5px;
       }
     }
   }
