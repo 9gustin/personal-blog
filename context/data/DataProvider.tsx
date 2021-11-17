@@ -10,7 +10,8 @@ export const getPageProps = (page: Page) => {
   if (!page) return;
 
   const data: any = {
-    title: page.properties.Name.title[0].plain_text
+    title: page.properties.Name.title[0].plain_text,
+    subtitle: `por ${user.title}`
   }
 
   if(page.cover?.[page.cover.type]) {
@@ -44,6 +45,7 @@ export const getPageMetaData = (page: Page) => {
 
   if (page) {
     const newProps = getPageProps(page)
+    newProps.title = `${newProps.title} x ${user.title}`
     data = {...data, ...newProps}
   }
 

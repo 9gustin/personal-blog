@@ -24,7 +24,7 @@ function ArticleHeader() {
       <ThemeToggler className={styles.toggler} hasBackground />
       <h1>{pageData.title}</h1>
       <Link href={PATHS.home}>
-        <a className={styles.byMe}>por {user.title}</a>
+        <a className={styles.byMe}>{pageData.subtitle}</a>
       </Link>
     </header>
   )
