@@ -12,7 +12,21 @@ interface Props {
 function TableOfContents({ className, scrollPosition }: Props) {
   const {pageData} = useDataContext()
 
-  const index = React.useMemo(() => pageData ? indexGenerator(pageData.blocks) : [], [pageData])
+  const index = React.useMemo(() => {
+    if (pageData) {
+      const index = indexGenerator(pageData.blocks)
+      
+      if (index.length > 0) {
+        return index.filter(item => item.type === blockEnum.HEADING2)
+      }
+    }
+
+    return []
+  }, [pageData])
+  
+  if (index.length === 0) {
+    return null
+  }
 
   const styleProps = scrollPosition ? {marginTop: `${scrollPosition}px`} : {}
 
@@ -20,7 +34,7 @@ function TableOfContents({ className, scrollPosition }: Props) {
     <aside className={className} style={styleProps}>
       <h4>Contenido del articulo</h4>
       <ul className={styles.list}>
-        {index.filter(item => item.type === blockEnum.HEADING2).map(({ id, plainText, type }) => (
+        {index.map(({ id, plainText, type }) => (
           <li key={id} className={type}>
             <a href={`#${rnrSlugify(plainText)}`}>{plainText}</a>
           </li>
