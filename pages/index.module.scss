@@ -17,3 +17,13 @@
     width: 100%;
   }
 }
+
+.alert {
+  background-color: var(--theme-color);
+  border-radius: 5px;
+  color: var(--bkg-color);
+  font-size: var(--size);
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
