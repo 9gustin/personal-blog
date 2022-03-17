@@ -24,7 +24,9 @@ export const getStaticProps = async () => {
       ...page,
       ...getPageProps(page),
     };
-  }).filter(({visible}) => visible);
+  }).filter(({visible}) => visible).sort(function(postA,postB){
+    return new Date(postB.release_date ?? postB.last_edited_time).getTime() - new Date(postA.release_date ?? postA.last_edited_time).getTime();
+  });
 
   return {
     props: {
