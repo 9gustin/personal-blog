@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
       ...page,
       ...getPageProps(page),
     };
-  });
+  }).filter(({visible}) => visible);
 
   return {
     props: {

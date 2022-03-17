@@ -25,11 +25,11 @@ const user: User = {
   title: "9gustin",
   emoji: "9️⃣",
   description:
-    "Hola! soy Agus, desarrollador frontend. En este blog hablo sobre cositas que me parecen interesantes",
+    "Hola! soy Agus, desarrollador frontend. En este blog escribo sobre cositas que me parecen interesantes",
   richDescription: (
     <>
       <p>
-        Hola! soy Agus, desarrollador frontend. En este blog hablo sobre cositas
+        Hola! soy Agus, desarrollador frontend. En este blog escribo sobre cositas
         que me parecen interesantes. A veces escribo en ingles en{" "}
         <a
           className="theme-color"
