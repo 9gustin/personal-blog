@@ -1,10 +1,10 @@
 import React from "react";
 import user from "../../config/user";
-import { Page } from "../../types/page";
+import { Page, propType } from "../../types/page";
 
 import DataContext from "./DataContext";
 
-const wantedProps = [ 'title', 'description', 'release_date', 'keywords' ];
+const wantedProps = ['public_title', 'description', 'release_date', 'keywords', 'visible', 'Tags'];
 
 export const getPageProps = (page: Page) => {
   if (!page) return;
@@ -20,9 +20,11 @@ export const getPageProps = (page: Page) => {
 
   wantedProps.forEach(prop => {
     const propName = page.properties[prop]?.type
-
     if (propName) {
-      const value = page.properties?.[prop][propName]?.[0]?.plain_text;
+      const value = 
+      propName === propType.CHECKBOX ? page.properties?.[prop][propName] 
+      : propName === propType.MULTI ? page.properties?.[prop][propName]
+      : page.properties?.[prop][propName]?.[0]?.plain_text;
       if (value) {
         data[prop] = value;
       }

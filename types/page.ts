@@ -4,9 +4,11 @@ enum coverType {
   EXTERNAL = 'external'
 }
 
-enum propType {
+export enum propType {
   RICH_TEXT = 'rich_text',
-  TITLE = 'title'
+  CHECKBOX = 'checkbox',
+  TITLE = 'title',
+  MULTI = 'multi_select'
 }
 
 export interface Page {
