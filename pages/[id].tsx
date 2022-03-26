@@ -77,7 +77,7 @@ export const getStaticProps = async (context) => {
   
   return {
     props: {
-      page: validatePage(pageWithProps) ? pageWithProps : null,
+      page: validatePage(pageWithProps) ? page : null,
     },
     revalidate: 1,
   };

@@ -6,7 +6,7 @@ import DataContext from "./DataContext";
 
 const wantedProps = ['public_title', 'description', 'release_date', 'keywords', 'visible', 'Tags'];
 
-export const getPageProps = (page: Page) => {
+export const getPageProps = (page?: Page) => {
   if (!page) return;
 
   const data: any = {
