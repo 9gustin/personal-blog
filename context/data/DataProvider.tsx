@@ -31,6 +31,8 @@ export const getPageProps = (page?: Page) => {
     }
   })
 
+  data.title = data.public_title ?? data.title
+
   return data
 }
 
