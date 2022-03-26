@@ -12,6 +12,8 @@ import { Page } from "../types/page";
 import LayoutWrapper from "../components/LayoutWrapper";
 import { getPageProps } from "../context/data/DataProvider";
 
+import prism from "../assets/prism";
+
 interface Props {
   page?: Page;
 }
@@ -19,7 +21,10 @@ interface Props {
 export default function Post({ page }: Props) {
   const { setPage } = useDataContext();
 
-  React.useEffect(() => setPage(page), [page, setPage]);
+  React.useEffect(() => {
+    setPage(page);
+    prism.highlightAll();
+  }, [page, setPage]);
 
   if (!page) {
     return <div />;
