@@ -1,6 +1,7 @@
 import React from "react";
 
 import { IS_DEV } from "../utils/isDev";
+import { validatePage } from "../utils/validatePage";
 import PostList from "../components/PostList";
 import { DATABASE_MOCK } from "../mocks/getDatabaseResponse";
 import { getDatabase } from "../services/notion";
@@ -24,7 +25,7 @@ export const getStaticProps = async () => {
       ...page,
       ...getPageProps(page),
     };
-  }).filter(({visible}) => visible).sort(function(postA,postB){
+  }).filter(validatePage).sort(function(postA,postB){
     return new Date(postB.release_date ?? postB.last_edited_time).getTime() - new Date(postA.release_date ?? postA.last_edited_time).getTime();
   });
 

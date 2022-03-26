@@ -1,7 +1,8 @@
 import React from "react";
-import { indexGenerator, Render } from "@9gustin/react-notion-render";
+import { Render } from "@9gustin/react-notion-render";
 
 import {IS_DEV} from "../utils/isDev";
+import {validatePage} from "../utils/validatePage";
 import ArticleWrapper from "../components/ArticleWrapper";
 import useDataContext from "../context/data/useDataContext";
 import { DATABASE_MOCK } from "../mocks/getDatabaseResponse";
@@ -9,9 +10,10 @@ import { PAGEDATA_MOCK } from "../mocks/pageDataResponse";
 import { getBlocks, getDatabase, getPage } from "../services/notion";
 import { Page } from "../types/page";
 import LayoutWrapper from "../components/LayoutWrapper";
+import { getPageProps } from "../context/data/DataProvider";
 
 interface Props {
-  page: Page;
+  page?: Page;
 }
 
 export default function Post({ page }: Props) {
@@ -70,10 +72,12 @@ export const getStaticProps = async (context) => {
 
     page.blocks = blocksWithChildren;
   }
+
+  const pageWithProps = getPageProps(page);
   
   return {
     props: {
-      page: page,
+      page: validatePage(pageWithProps) ? pageWithProps : null,
     },
     revalidate: 1,
   };
