@@ -27,8 +27,8 @@ function Footer() {
           reference,
         }),
       }).finally(() => {
-        e.target.comment.value = ""
-        setCommented(true)
+        e.target.comment.value = "";
+        setCommented(true);
       });
     }
   };
@@ -38,17 +38,16 @@ function Footer() {
       {commented ? (
         <p>Gracias {"<3"}</p>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
+        <form onSubmit={handleSubmit} className={styles.comments}>
+          <label htmlFor="comment">
             Contame, que tal te parecio? Es anonimo y me ayudas a mejorar ;)
-            <textarea name="comment" />
           </label>
+          <textarea name="comment" />
           <button type="submit">
             <GrSend />
           </button>
         </form>
       )}
-
       <ul className={styles.links}>
         {user.links.map(({ name, url, icon }) => (
           <li key={name} className={styles.icon}>

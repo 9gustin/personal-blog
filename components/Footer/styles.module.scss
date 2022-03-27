@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .footer {
   background-color: var(--theme-color);
   color: #222;
@@ -14,12 +16,12 @@
     justify-content: space-between;
     list-style: none;
     padding: 0;
-  
+
     .icon {
       color: inherit;
       font-size: 40px;
-      transition: transform .5s;
-  
+      transition: transform 0.5s;
+
       a {
         color: inherit;
       }
@@ -29,5 +31,39 @@
       }
     }
   }
+
+  .comments {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    label {
+      display: block;
+      margin: 0 10px 20px;
+    }
+    textarea {
+      border: none;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 50px;
+      font-size: var(--size);
+      resize: none;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      & > :first-child {
+        font-size: 30px;
+      }
+    }
+  }
 }
 
+@media (max-width: $mobile-breakpoint) {
+  .footer > .comments > textarea {
+    max-width: 250px;
+  }
+}
