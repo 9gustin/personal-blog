@@ -7,15 +7,15 @@
   li {
     margin: 10px 0;
 
+    transition: margin .3s;
+
+    &:hover {
+      margin-left: 5px;
+    }
+
     a {
       color: var(--text-color);
       font-weight: 300;
-      opacity: .7;
-      transition: opacity .3s;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 }

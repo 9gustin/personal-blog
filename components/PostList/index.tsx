@@ -8,7 +8,9 @@ import styles from "./styles.module.scss";
 interface Props {
   posts: {
     id: string;
+    title?: string;
     last_edited_time: string;
+    release_date?: string;
     properties: { Name: NotionBlock };
   }[];
 }
@@ -21,13 +23,13 @@ function PostList({ posts }: Props) {
           <Link href={`/${post.id}`}>
             <a className={styles.post}>
               <h3 className={styles.title}>
-                <Link href={`/${post.id}`}>
-                  <Render blocks={[post.properties.Name]} />
+                <Link href={`/${post.id}`} passHref>
+                  <a>{post.title}</a>
                 </Link>
               </h3>
 
               <p className={styles.subtitle}>
-                {dateToString(post.last_edited_time)}
+                {dateToString(post.release_date ?? post.last_edited_time)}
               </p>
             </a>
           </Link>

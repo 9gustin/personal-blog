@@ -1,11 +1,16 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { THEMES, THEME_KEY, THEMES_LABELS } from './constants';
 import isNavigatorDarkTheme from '../../utils/isNavigatorDarkTheme';
 
 import styles from './styles.module.scss';
 
-function ThemeToggler() {
-  const [selectedTheme, setTheme] = useState();
+interface Props {
+  className?: string;
+  hasBackground?: boolean;
+}
+
+function ThemeToggler({className, hasBackground}: Props) {
+  const [selectedTheme, setTheme] = useState<string | undefined>();
 
   const handleChangeTheme = () => setTheme(THEMES[Object.keys(THEMES).find(theme => THEMES[theme] !== selectedTheme)])
 
@@ -27,7 +32,7 @@ function ThemeToggler() {
   }, [selectedTheme])
 
   return (
-    <button onClick={handleChangeTheme} className={styles.button}>
+    <button onClick={handleChangeTheme} className={`${styles.button} ${className ?? ''} ${hasBackground ? styles.withBg : ''}`}>
       {THEMES_LABELS[selectedTheme]}
     </button>
   )

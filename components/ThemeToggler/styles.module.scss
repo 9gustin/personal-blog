@@ -11,9 +11,13 @@
   font-size: 1.2rem;
   height: 40px;
   justify-content: center;
-  opacity: 0.85;
+  opacity: 0.95;
   transition: .7s;
   width: 40px;
+  
+  &.withBg {
+    background: var(--bkg-color);
+  }
 }
 
 .button:hover,

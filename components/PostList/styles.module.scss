@@ -9,7 +9,6 @@
   display: flex;
   flex-wrap: wrap;
   margin: 25px 0;
-  opacity: 0.85;
   transition: all 0.4s;
   color: var(--text-color);
 
@@ -21,6 +20,10 @@
     margin: 0;
     overflow: hidden;
     width: 80%;
+
+    a {
+      color: var(--text-color);
+    }
   }
 
   .subtitle {
@@ -37,12 +40,11 @@
     height: 10px;
     margin: auto 10px;
     width: 10px;
-    opacity: .85;
+    opacity: .65;
   }
 
   &:hover {
-    opacity: 1;
-    transform: scale(1.025);
+    transform: scale(1.015);
 
     &::before {
       opacity: 1;

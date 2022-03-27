@@ -1,42 +1,46 @@
-import {
-  indexGenerator,
-  NotionBlock,
-  Render,
-} from "@9gustin/react-notion-render";
+import React from "react";
+import { Render } from "@9gustin/react-notion-render";
 
-import { getDatabase, getPage, getBlocks } from "../lib/notion";
+import {IS_DEV} from "../utils/isDev";
+import {validatePage} from "../utils/validatePage";
 import ArticleWrapper from "../components/ArticleWrapper";
+import useDataContext from "../context/data/useDataContext";
+import { DATABASE_MOCK } from "../mocks/getDatabaseResponse";
+import { PAGEDATA_MOCK } from "../mocks/pageDataResponse";
+import { getBlocks, getDatabase, getPage } from "../services/notion";
+import { Page } from "../types/page";
+import LayoutWrapper from "../components/LayoutWrapper";
+import { getPageProps } from "../context/data/DataProvider";
 
-import { databaseId } from ".";
-import Head from "next/head";
-import HtmlHead from "../components/HtmlHead";
+import prism from "../assets/prism";
 
 interface Props {
-  page: any;
-  blocks: NotionBlock[];
-  mainTitle: string;
+  page?: Page;
 }
 
-export default function Post({ page, blocks, mainTitle }: Props) {
-  if (!page || !blocks) {
+export default function Post({ page }: Props) {
+  const { setPage } = useDataContext();
+
+  React.useEffect(() => {
+    setPage(page);
+    prism.highlightAll();
+  }, [page, setPage]);
+
+  if (!page) {
     return <div />;
   }
 
   return (
-    <>
-      <HtmlHead title={mainTitle} />
-      <ArticleWrapper
-        title={<Render blocks={[page.properties.Name]} />}
-        index={indexGenerator(blocks)}
-      >
-        <Render blocks={blocks} useStyles classNames/>
+    <LayoutWrapper page={page}>
+      <ArticleWrapper>
+        <Render blocks={page.blocks} useStyles classNames />
       </ArticleWrapper>
-    </>
+    </LayoutWrapper>
   );
 }
 
 export const getStaticPaths = async () => {
-  const database = await getDatabase(databaseId);
+  const database = IS_DEV ? DATABASE_MOCK : await getDatabase();
   return {
     paths: database.map((page) => ({ params: { id: page.id } })),
     fallback: true,
@@ -45,36 +49,40 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { id } = context.params;
-  const page = await getPage(id);
-  const blocks = await getBlocks(id);
+  const page: any = IS_DEV ? PAGEDATA_MOCK : await getPage(id);
 
-  // Retrieve block children for nested blocks (one level deep), for example toggle blocks
-  // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
-  const childBlocks = await Promise.all(
-    blocks
-      .filter((block) => block.has_children)
-      .map(async (block) => {
-        return {
-          id: block.id,
-          children: await getBlocks(block.id),
-        };
-      })
-  );
-  const blocksWithChildren = blocks.map((block) => {
-    // Add child blocks if the block should contain children but none exists
-    if (block.has_children && !block[block.type].children) {
-      block[block.type]["children"] = childBlocks.find(
-        (x) => x.id === block.id
-      )?.children;
-    }
-    return block;
-  });
+  if (!IS_DEV) {
+    const blocks = await getBlocks(id);
 
+    const childBlocks = await Promise.all(
+      blocks
+        .filter((block) => block.has_children)
+        .map(async (block) => {
+          return {
+            id: block.id,
+            children: await getBlocks(block.id),
+          };
+        })
+    );
+  
+    const blocksWithChildren = blocks.map((block) => {
+      // Add child blocks if the block should contain children but none exists
+      if (block.has_children && !block[block.type].children) {
+        block[block.type]["children"] = childBlocks.find(
+          (x) => x.id === block.id
+        )?.children;
+      }
+      return block;
+    });
+
+    page.blocks = blocksWithChildren;
+  }
+
+  const pageWithProps = getPageProps(page);
+  
   return {
     props: {
-      page,
-      blocks: blocksWithChildren,
-      mainTitle: (page.properties.Name as any).title[0].plain_text,
+      page: validatePage(pageWithProps) ? page : null,
     },
     revalidate: 1,
   };

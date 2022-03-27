@@ -1,3 +1,6 @@
+
+@import '../styles/variables';
+
 .heading {
   align-items: center;
   color: var(--light-text-color);
@@ -15,5 +18,18 @@
     height: 1px;
     margin: 0 15px;
     width: 100%;
+  }
+}
+
+.nextRelease {
+  margin: 10px 20px -20px;
+  color: var(--light-text-color);
+  text-align: right;
+}
+
+@media (max-width: $mobile-breakpoint) {
+  .nextRelease {
+    text-align: left;
+    margin: 10px;
   }
 }

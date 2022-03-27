@@ -1,23 +1,10 @@
-import Head from "next/head";
 import React from "react";
-import user from "../../config/user";
+import Head from "next/head";
 
-interface Props {
-  title?: string;
-  description?: string;
-  url?: string;
-  image?: string;
-}
+import { getPageMetaData } from "../../context/data/DataProvider";
 
-function HtmlHead({ title, description, url, image }: Props) {
-  const data = {
-    title: title || `${user.mainTitle}${user.pageTitle}`,
-    description: description || user.description,
-    url: url || user.url,
-    image: image || user.mainImagePath,
-    keywords: user.keywords,
-    icon: user.favicon
-  };
+function HtmlHead({page}) {
+  const data = getPageMetaData(page);
 
   return (
     <Head>
@@ -25,7 +12,7 @@ function HtmlHead({ title, description, url, image }: Props) {
       <link rel="icon" href={data.icon} />
       <meta name="title" content={data.title} />
       <meta name="description" content={data.description} />
-      <meta name="keywords" content={data.keywords}/>
+      <meta name="keywords" content={data.keywords} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={data.url} />
       <meta property="og:title" content={data.title} />
