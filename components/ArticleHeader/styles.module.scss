@@ -2,7 +2,7 @@ $header-height-desktop: 560px;
 $header-height-mobile: 360px;
 
 .header {
-  height: $header-height-desktop;
+  min-height: $header-height-desktop;
   width: 100%;
 
   .imgContainer {
@@ -72,7 +72,7 @@ $header-height-mobile: 360px;
 
 @media (max-width: 800px) {
   .header {
-    height: $header-height-mobile;
+    min-height: $header-height-mobile;
 
     .imgContainer {
       height: 200px;
