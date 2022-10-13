@@ -64,7 +64,7 @@ const user: User = {
     {
       name: "Linkedin",
       icon: <RiLinkedinLine />,
-      url: "https://www.linkedin.com/in/vazquezagustin/",
+      url: "https://www.linkedin.com/in/9gustin/",
     },
     {
       name: "Cafecito",
