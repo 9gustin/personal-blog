@@ -17,8 +17,8 @@ function Header({ className, title, description }: Props) {
   return (
     <header className={`${styles.header} ${className || ""}`}>
       <h1>
-        <Link href={PATHS.home}>
-          <a className={styles.title}>{title}</a>
+        <Link href={PATHS.home} className={styles.title}>
+          {title}
         </Link>
       </h1>
       <ThemeToggler />

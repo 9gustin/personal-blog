@@ -1,15 +1,14 @@
-import React from 'react'
+import React from "react";
 import Link from "next/link";
 
-import ThemeToggler from '../ThemeToggler'
-import { PATHS } from '../../config/paths';
+import ThemeToggler from "../ThemeToggler";
+import { PATHS } from "../../config/paths";
 
-import styles from './styles.module.scss'
-import useDataContext from '../../context/data/useDataContext';
-import user from '../../config/user';
+import styles from "./styles.module.scss";
+import useDataContext from "../../context/data/useDataContext";
 
 function ArticleHeader() {
-  const {pageData} = useDataContext();
+  const { pageData } = useDataContext();
 
   if (!pageData) {
     return <>Cargando...</>;
@@ -18,16 +17,16 @@ function ArticleHeader() {
   return (
     <header className={styles.header}>
       <div className={styles.imgContainer}>
-        <img src={pageData.image} alt="Page cover image"/>
+        <img src={pageData.image} alt="Page cover image" />
       </div>
       {pageData.emoji && <span className={styles.emoji}>{pageData.emoji}</span>}
       <ThemeToggler className={styles.toggler} hasBackground />
       <h1>{pageData.title}</h1>
-      <Link href={PATHS.home}>
-        <a className={styles.byMe}>{pageData.subtitle}</a>
+      <Link href={PATHS.home} className={styles.byMe}>
+        {pageData.subtitle}
       </Link>
     </header>
-  )
+  );
 }
 
-export default ArticleHeader
+export default ArticleHeader;

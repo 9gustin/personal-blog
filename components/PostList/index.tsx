@@ -20,18 +20,16 @@ function PostList({ posts }: Props) {
     <ul className={styles.posts}>
       {posts.map((post) => (
         <li key={post.id}>
-          <Link href={`/${post.id}`}>
-            <a className={styles.post}>
-              <h3 className={styles.title}>
-                <Link href={`/${post.id}`} passHref>
-                  <a>{post.title}</a>
-                </Link>
-              </h3>
+          <Link href={`/${post.id}`} className={styles.post}>
+            <h3 className={styles.title}>
+              <Link href={`/${post.id}`} passHref>
+                {post.title}
+              </Link>
+            </h3>
 
-              <p className={styles.subtitle}>
-                {dateToString(post.release_date ?? post.last_edited_time)}
-              </p>
-            </a>
+            <p className={styles.subtitle}>
+              {dateToString(post.release_date ?? post.last_edited_time)}
+            </p>
           </Link>
         </li>
       ))}

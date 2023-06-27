@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 
 import { withRouter } from "next/router";
 import Header from "../Header";
@@ -11,7 +11,7 @@ import Footer from "../Footer";
 import HtmlHead from "../HtmlHead";
 
 function LayoutWrapper({ router, children, page }) {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (user.theme) document.body.classList.add(`${user.theme}-theme`);
   }, []);
 
